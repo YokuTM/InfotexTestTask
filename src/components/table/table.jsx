@@ -1,28 +1,30 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Row from "../row/row";
 import Filter from "../filter/filter";
- 
- function Table() {
-    const [users, setUser] = useState([]);
-    // const [filter, setFilter] = useState(['/filter?key=lastName&value=Johnson'])
-      useEffect(() => {
-        fetch("https://dummyjson.com/users?limit=208")
-          .then((res) =>  res.json())
-          .then((json) => {
-            setUser(json.users)
-            console.log(json.users)
-          });
-      }, []);
-      console.log()
-      //filter?key=gender&value=female
-      //?skip=30
 
-    return (
-        <div>
+let allUsers = [];
+function Table() {
+  const [users, setUser] = useState([]);
+  useEffect(() => {
+    fetch("https://dummyjson.com/users?limit=208")
+      .then((res) => res.json())
+      .then((json) => {
+        setUser(json.users);
+
+        allUsers = json.users;
+        console.log(allUsers);
+      });
+  }, []);
+
+  function refreshUsers(users) {
+    setUser(users);
+  }
+  return (
+    <div>
       <h2>Пользователи</h2>
-      <Filter />
+      <Filter refreshUsers={refreshUsers} allUsers={allUsers} />
       <div class="table-responsive small">
-        <table class="table table-striped table-sm table-bordered">
+        <table class="table table-striped table-bordered">
           <thead>
             <tr>
               <th scope="col">ФИО</th>
@@ -33,15 +35,14 @@ import Filter from "../filter/filter";
             </tr>
           </thead>
           <tbody>
-            {users.map((user)=> 
-              <Row data= {user} />
-            )}
-          
+            {users.map((user) => (
+              <Row data={user} />
+            ))}
           </tbody>
         </table>
       </div>
     </div>
-    );
+  );
 }
 
-export default Table
+export default Table;
