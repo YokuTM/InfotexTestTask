@@ -1,12 +1,12 @@
 
 function Row(props) {
-  function popUp() {
-   props.userId(props.data.id);
+  function openModal() {
+   props.openModal(props.data.id);
   }
 
   //вывод данных в таблицу
   return (
-    <tr onClick={popUp}>
+    <tr onClick={openModal}>
       <td>
         {props.data.firstName} {props.data.lastName} {props.data.maidenName}
       </td>
