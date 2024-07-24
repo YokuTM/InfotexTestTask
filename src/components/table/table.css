@@ -1,0 +1,9 @@
+.table{
+  max-width: 1200px;
+  border-collapse: collapse;
+}
+.table th {
+  resize:horizontal;
+  overflow:auto;
+  min-width: 50px;
+}

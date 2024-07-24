@@ -11,7 +11,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.table{
+/* .table{
   max-width: 1200px;
   border-collapse: collapse;
 }
@@ -19,5 +19,5 @@ code {
   resize:horizontal;
   overflow:auto;
   min-width: 50px;
-}
+} */
 

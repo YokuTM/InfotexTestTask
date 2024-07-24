@@ -1,6 +1,7 @@
 import {useRef} from 'react';
 
 function Filter(props) {
+  // filters передает значения для поиска, чтобы перебрать искомое значение по всем столбцам
   const filters = [
     "firstName",
     "lastName",
@@ -11,8 +12,11 @@ function Filter(props) {
     "address.city",
     "address.address",
   ];
+
+  //константа для очиски Input
   const ref = useRef(null);
 
+  //поиск информации из колонов по всей таблице
   function getPromisesFilteredUsers(value) {
     const promises = [];
     filters.forEach((parametr) => {
@@ -25,6 +29,7 @@ function Filter(props) {
     return promises;
   }
 
+  //получение отфильтрованных пользователей
   function getFilterUsers(value) {
     const jsons = [];
     Promise.allSettled(getPromisesFilteredUsers(value)).then((promises) => {
@@ -36,24 +41,26 @@ function Filter(props) {
         json.forEach((data) => {
           users.push(...data.value.users);
         });
-        console.log(users);
         props.refreshUsers(users);
       });
     });
   }
+
+  //отслеживание нажатия Enter
   function checkInput(event) {
     if (event.code === "Enter") {
       getFilterUsers(event.nativeEvent.target.value);
-      // console.log(event.nativeEvent.target.value);
-      // console.log(event.nativeEvent);
-    }
+      }
   }
+
+  //очистка фильтра
   function getAllUsers() {
     
     props.refreshUsers(props.allUsers);
     ref.current.value = '';
   }
 
+  //Input и кнопка возврата к исходному состоянию
   return (
     <div class="row g-2 mb-1">
       <div class="col-auto">
