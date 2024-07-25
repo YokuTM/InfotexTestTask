@@ -3,7 +3,7 @@ function Row(props) {
   function openModal() {
    props.openModal(props.data.id);
   }
-
+  
   //вывод данных в таблицу
   return (
     <tr onClick={openModal}>

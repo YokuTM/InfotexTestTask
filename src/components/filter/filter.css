@@ -19,7 +19,7 @@ button[type=button] {
     border: 1px solid #ccc;
     background-color: #ffffff;
     color: #ccc;
-    width: 2%;
+    width: 40px;
     border-radius: 15%;
 }
 button[type=button]:hover {
@@ -37,7 +37,7 @@ button[type=button]:active {
 
     }
     button[type=button] {
-        width: 8vw;
+        width: 10vw;
         
     }
  }

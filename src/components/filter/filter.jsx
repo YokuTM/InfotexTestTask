@@ -1,5 +1,6 @@
 import {useRef} from 'react';
 import "./filter.css"
+import Close from "./close.png"
 
 function Filter(props) {
   // filters передает значения для поиска, чтобы перебрать искомое значение по всем столбцам
@@ -14,10 +15,10 @@ function Filter(props) {
     "address.address",
   ];
 
-  //константа для очиски Input
+  //ссылка на поиск
   const ref = useRef(null);
 
-  //поиск информации из колонов по всей таблице
+  //поиск информации из колонок по всей таблице
   function getPromisesFilteredUsers(value) {
     const promises = [];
     filters.forEach((parametr) => {
@@ -61,7 +62,6 @@ function Filter(props) {
     ref.current.value = '';
   }
 
-  //Input и кнопка возврата к исходному состоянию
   return (
     <div className='filter'>
         <input
@@ -74,7 +74,7 @@ function Filter(props) {
           onClick={getAllUsers}
           type="button"
         >
-          <i class="fa fa-close"></i>
+          <img src={Close} alt="" vertical-align="middle" width='15vw' height='16vh'/>
         </button>
     </div>
   );

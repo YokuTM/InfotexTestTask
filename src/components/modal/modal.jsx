@@ -1,4 +1,5 @@
 import "./modal.css"
+import Close from "./close.png"
 
 function Modal(props) {
     // console.log(props.modalUser)
@@ -10,7 +11,7 @@ function Modal(props) {
     return(
         <div class="wrap">
             <div class="modal">
-                <button type="modalButton" onClick={closeModal}><i class="fa fa-close"></i></button>
+                <button type="modalButton" onClick={closeModal}><img src={Close} alt="" vertical-align="middle" width='15vw' height='16vh'/></button>
                 <div class="modal__content">
                 <header>
                     <a>
